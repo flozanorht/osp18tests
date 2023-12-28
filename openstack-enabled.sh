@@ -3,6 +3,9 @@
 # Simple script to display the status of OpenStack control plane services on OpenShift
 
 ocpcp="openstack-basic"
+# Complete list of attributes under .spec
+services="ceilometer cinder dns extraMounts galera glance heat horizon ironic keystone manila mariadb memcached neutron nodeSelector nova octavia ovn placement rabbitmq redis secret storageClass swift"
+# My best guess about which ones are real control plane services, and the presence of an enabled attribute
 services="ceilometer cinder dns galera glance heat horizon ironic keystone manila mariadb memcached neutron nova octavia ovn placement rabbitmq redis swift"
 
 printf "%-12s: %-7s - %s\n" SERVICE ENABLED READY
