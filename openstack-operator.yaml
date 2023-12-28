@@ -1,0 +1,28 @@
+# From https://access.redhat.com/documentation/en-us/red_hat_openstack_platform/18.0-dev-preview/html/deploying_red_hat_openstack_platform_18.0_development_preview_2_on_red_hat_openshift_container_platform/assembly_installing-and-preparing-the-operators
+# Using the private registry in GLS OpenShift classrooms to store the catalog image
+# Need to exclude the dataplane operator (docs are wrong).
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: openstack-operator-index
+  namespace: openstack-operators
+spec:
+  sourceType: grpc
+  image: registry.ocp4.example.com:8443/rhosp-dev-preview/openstack-operator-index:0.1.2
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: openstack
+  namespace: openstack-operators
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: openstack-operator
+  namespace: openstack-operators
+spec:
+  name: openstack-operator
+  channel: alpha
+  source: openstack-operator-index
+  sourceNamespace: openstack-operators
