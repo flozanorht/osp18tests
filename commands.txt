@@ -2,6 +2,6 @@ alias ocpcli="oc exec -n openstack openstackclient -- openstack"
 
 ocpcli endpoint list --sort-column 'Service Name' -c 'Service Name' -c 'URL'
 
-sudo yum install python3-openstackclient
+sudo yum install python3-openstackclient python-openstackclient-doc
 openstack complete | sudo tee /etc/bash_completion.d/osc.bash_completion > /dev/null
 
