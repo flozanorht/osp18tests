@@ -1,0 +1,16 @@
+---
+# attempt to configure a VLAN in a RHEL9 host
+# don't know if this is wrong, incomplete, or if OpenStack networking is blocking my VLAN packets
+interfaces:
+  - name: eth1.101
+    type: vlan
+    state: up
+    vlan:
+      base-iface: eth1
+      id: 101
+    ipv4:
+      enabled: true
+      dhcp: false
+      address:
+        - ip: 192.168.90.31
+          prefix-length: 24
