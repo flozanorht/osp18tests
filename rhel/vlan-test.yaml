@@ -2,6 +2,7 @@
 # attempt to configure a VLAN in a RHEL9 host
 # don't know if this is wrong, incomplete, or if OpenStack networking is blocking my VLAN packets
 interfaces:
+  # the name could be something like vlan101
   - name: eth1.101
     type: vlan
     state: up
