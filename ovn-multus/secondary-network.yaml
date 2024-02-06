@@ -1,0 +1,20 @@
+# isolated l2 network requires OVNKubernetes and OCP 4.13+
+# Must(?) be in project network-tests
+# Test with a pod this way:
+# oc run pod1 -it --restart Never --annotations "k8s.v1.cni.cncf.io/networks=l2-network" --image registry.redhat.io/openshift4/network-tools-rhel8
+# 
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: l2-network
+spec:
+  config: |-
+	{
+  	"cniVersion": "0.3.1",
+  	"name": "l2-network",
+  	"type": "ovn-k8s-cni-overlay",
+  	"topology":"layer2",
+  	"subnets": "10.100.200.0/24",
+  	"netAttachDefName": "network-tests/l2-network"
+	}
+
