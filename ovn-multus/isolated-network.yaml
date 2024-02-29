@@ -1,0 +1,14 @@
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: isolated-network
+spec:
+  config: |-
+    {
+      "cniVersion": "0.3.1",
+      "name": "isolated-network",
+      "type": "ovn-k8s-cni-overlay",
+      "topology": "localnet",
+      "subnets": "192.168.51.0/24",
+      "netAttachDefName": "secondary-networks/isolated-network"
+    }
